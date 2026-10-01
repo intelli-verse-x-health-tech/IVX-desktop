@@ -21,6 +21,7 @@ export const BRAND_CONNECTOR_CATALOG: BrandConnectorCatalogEntry[] = [
   { id: 'notifuse', label: 'Mail Studio', mcpUrl: '' },
   { id: 'chatwoot', label: 'Inbox Studio', mcpUrl: '' },
   { id: 'twenty', label: 'CRM', mcpUrl: '' },
+  { id: 'automation-studio', label: 'Automation Studio', mcpUrl: 'https://api.intelli-verse-x.ai/api/admin/public/automation/mcp' },
   { id: 'fonoster', label: 'Voice Studio', mcpUrl: '' },
   { id: 'stripe', label: 'Stripe', mcpUrl: 'https://mcp.stripe.com' },
   { id: 'revenuecat', label: 'RevenueCat', mcpUrl: 'https://mcp.revenuecat.ai/mcp' },
