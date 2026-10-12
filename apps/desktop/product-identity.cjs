@@ -59,6 +59,14 @@ if (store && (canary || buildCommit)) {
   throw new Error('Store packaging is only eligible for stable releases')
 }
 
+// Default IVX-Agency builds must not share Windows AppUserModelID with upstream
+// Hermes (`com.nousresearch.hermes`), or the taskbar keeps the old Hermes icon
+// while the window chrome shows the IVX mark.
+const ivxAgency = !light && !store && name.display === 'IVX-Agency'
+const appId = ivxAgency
+  ? `com.intelli-verse-x.ivx-agency${kebabSuffix}`
+  : `com.nousresearch.${name.kebab}${kebabSuffix}`
+
 /** @typedef {import("./product-identity.d.cts")} ProductIdentity */
 
 /** @type {ProductIdentity} */
@@ -66,7 +74,7 @@ const identity = {
   store,
   light,
   displayName,
-  appId: `com.nousresearch.${name.kebab}${kebabSuffix}`,
+  appId,
   // Store and commit builds do not publish a release feed.
   channel: store || buildCommit ? null : light ? (canary ? 'light-canary' : 'light') : (canary ? 'canary' : 'latest'),
   appNamePascal: `${name.pascal}${pascalSuffix}`,

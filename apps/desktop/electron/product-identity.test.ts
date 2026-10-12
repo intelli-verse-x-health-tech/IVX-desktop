@@ -118,9 +118,9 @@ test('nonstable runtime pins userData before the app name can change', async ():
 })
 
 test.each([
-  [undefined, 'Hermes', 'hermes', 'latest', 'canary'],
-  ['bundled', 'Hermes Agent', 'hermes', 'latest', 'canary'],
-  ['light', 'Hermes Light', 'hermes-light', 'light', 'light-canary']
+  [undefined, 'IVX-Agency', 'hermes', 'latest', 'canary', 'com.intelli-verse-x.ivx-agency'],
+  ['bundled', 'Hermes Agent', 'hermes', 'latest', 'canary', 'com.nousresearch.hermes-bundled'],
+  ['light', 'Hermes Light', 'hermes-light', 'light', 'light-canary', 'com.nousresearch.hermes-light']
 ] as const)(
   '%s separates stable, canary and independent commits',
   async (
@@ -128,10 +128,12 @@ test.each([
     display: string,
     cli: string,
     channel: string,
-    canaryChannel: string
+    canaryChannel: string,
+    expectedAppId: string
   ): Promise<void> => {
     const stable: ProductIdentity = await identityForVariant(variant)
     assert.equal(stable.displayName, display)
+    assert.equal(stable.appId, expectedAppId)
     assert.equal(stable.channel, channel)
     assert.equal(stable.light, variant === 'light')
     assert.equal(stable.storeMsix, undefined)
