@@ -1,6 +1,7 @@
-import { app, session } from 'electron'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
+
+import { app, session } from 'electron'
 
 import type { BrandSession } from './brand-scope'
 
@@ -208,6 +209,7 @@ async function portalJson(method: string, urlPath: string, body?: unknown): Prom
     headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
     body: body === undefined ? undefined : JSON.stringify(body)
   })
+
   const parsed = await response.json().catch(() => null)
 
   return { ok: response.ok, status: response.status, body: parsed }

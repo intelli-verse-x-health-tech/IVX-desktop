@@ -30,6 +30,7 @@ async function reloadConnectedBrandMcp(): Promise<void> {
   if (send()) {
     reloadWhenOpen?.()
     reloadWhenOpen = null
+
     return
   }
 
@@ -55,6 +56,7 @@ function writeMcp(task: () => Promise<void>): Promise<void> {
     () => undefined,
     () => undefined
   )
+
   return run
 }
 

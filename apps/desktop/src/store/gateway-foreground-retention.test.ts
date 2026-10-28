@@ -49,6 +49,7 @@ const {
 const { $sessionTiles, foregroundSessionScopes, liveSessionScopes, recordSessionEventScope } = await import(
   './session-states'
 )
+
 const { stampSecondaryProfileOwner } = await import('./session-event-provenance')
 const { $selectedStoredSessionId, $sessions, setActiveSessionId } = await import('@/store/session')
 

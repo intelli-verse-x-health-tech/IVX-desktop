@@ -1243,6 +1243,7 @@ export function useGatewayBoot({
 
         livenessProbeFailures = 0
       }
+
       ownCloseReason = 'manual'
       gateway.close()
       clearReconnectTimer()

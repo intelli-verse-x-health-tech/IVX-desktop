@@ -1,5 +1,5 @@
 import { useStore } from '@nanostores/react'
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { type ReactNode, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 import { $brandConnectors, emptyBrandConnectors } from '@/store/brand-connectors'
@@ -47,6 +47,7 @@ export function BrandGate() {
   useEffect(() => {
     if (!api) {
       setReady(true)
+
       return
     }
 
@@ -146,6 +147,7 @@ export function BrandGate() {
                 .signIn()
                 .then(next => {
                   applyBrand(next)
+
                   if (!next.signedIn) {
                     setError('Sign-in was not finished.')
                   }
